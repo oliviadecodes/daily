@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>v-html指令</title>
+	<script src = "./vue.js"></script>
+</head>
+<body>
+	
+	<div id="app">
+		<!--把Vue对象的数据展示在页面上：1、插值表达式 2、v-text指令-->
+		<p v-cloak>{{ msg }}</p>
+		<p v-text="msg"></p>
+		<!--插值表达式和v-text指令被直接解析成了字符串元素-->
+		<p v-html="msg"></p>
+		<!--v-html可以解析标签属性-->
+	</div>
+	
+	<script type="text/javascript">
+		var vm = new Vue({
+			el: "#app",
+			data: {
+				//msg: "<h1>这是一个h1元素的内容</h1>"
+				msg : "<h1 style='color:red'>这是一个h1元素内容</h1>"
+			}
+		});
+	</script>
+</body>
+</html>
