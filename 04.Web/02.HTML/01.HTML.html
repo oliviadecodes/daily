@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<style type="text/css">
+		body {
+			/*十六进制的颜色值*/
+			background-color: #FCEFEC 
+		}
+		p {
+			/*文本缩进*/
+			text-indent: 2em;
+			/*字体自适应对齐：会把内容尽可能充满整行*/
+			text-align: justify;
+		}
+	</style>
+</head>
+<body> 
+	<!--拥有关于背景颜色的附加信息 -->
+	<h1>HTML</h1>
+	<hr>
+	<h2 style="font-family:arial;color: red">定义标题的开始</h2>
+	<!--style 属性淘汰了旧的 "font" 属性。-->
+	<h2 style="text-align: center">拥有关于对齐方式的附加信息</h2>
+	<!--style 属性淘汰了旧的 "align" 属性。-->
+	<p>这是一段普通的段落<br/>to break<br/>lines<br/>in a<br/>paragraph<br/>use the br tag<br/></p>
+	<pre>这是一段普通的段落
+		to <i>break</i>
+		lines
+		in a
+		paragraph
+	use the br tag</pre>
+	
+	<h2>HTML文本格式化</h2>
+
+	<h3 style="color: red">缩写和首字母缩写</h3>
+	<abbr title="etcetera">etc.</abbr>
+	<p><dfn title="World Health Organization">WHO</dfn> 成立于 1948 年。</p>
+	<acronym title="World Wide Web">WWW</acronym>
+	<p>对缩写进行标记能够为浏览器、翻译系统以及搜索引擎提供有用的信息。</p>	
+	<p>仅对于 IE 5 中的 acronym 元素有效。</p>
+	<p>对于 Netscape 6.2 中的 abbr 和 acronym 元素都有效。</p>
+
+	<br/>
+	<h3 style="color: red">块引用</h3>
+	<blockquote>这是长的引用，使用blocquote元素了话，浏览器会插入换行和外边距。<br/>浏览器通常会对blockquote元素进行缩进处理。</blockquote>
+	<br/>
+	<q>这是短的引用，q元素和blocquote相比不会有任何特殊的呈现。<br/>浏览器通常会为 q 元素包围引号。</q>
+	<br/>
+
+	<h3 style="color: red">删除文本和下划线文本</h3>
+	<p>一打有 <del>二十</del> <ins>十二</ins> 件。</p>
+	<p>一般的浏览器会改写为删除文本和下划线文本，<br/>一些老的浏览器会把删除线文本和下划线文本改成普通文本</p>
+	
+
+	<h3 style="color: red">textarea标签</h3>
+	<textarea rows="3" cols="20">textarea标签定义多行的文本输入控件。文本区可容纳无限量的文本其中的文本的默认字体是等宽字体（通常是 Courier）。</textarea>
+	<br/>
+
+	<h3 style="color: red">表格</h3>
+	<p>每个表格由table标签开始。表格行tr标签。表格数据td标签</p>
+	<h4>HTML 引文、引用和定义元素</h4>
+	<table border="1">
+		<tr>
+			<td>标签</td>
+			<td>描述</td>
+		</tr>
+		<tr>
+			<td>address</td>
+			<td>定义文档作者或拥有者的联系信息。</td>
+		</tr>
+		<tr>
+			<td>bdo</td>
+			<td>定义文本方向。</td>
+		</tr>
+		<tr>
+			<td>blockquote</td>
+			<td>定义从其他来源引用的节。</td>
+		</tr>
+		<tr>
+			<td>cite</td>
+			<td>定义著作的标题。</td>
+		</tr>
+	</table>
+	<hr>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>指令之v-bind绑定</title>
+	
+	<style>
+		.active
+		{
+			color:red;
+		}
+	</style>
+</head>
+<body>
+	<div id='app'>
+		<a v-bind:href='res.url' v-bind:title= 'res.title'>{{ res.name }}</a>
+		<!--<img :src="imgSrc">-->
+		<h3 class='name' :class="{active:isActive}">v-bind指令</h3>
+		<!--<h4 :aaa = 'res.name'></h4>自定义属性-->
+		<h4 :style='{color:isColor, fontSize:fontSize + "px"}'>v-bind指令</h4>
+	</div>
+	<script src="./vue.js"></script>
+	<script type="text/javascript">
+		new Vue({
+			el: '#app',
+			data:{
+				res:{
+					name:'百度',
+					url:'https://www.baidu.com',
+					title:'百度一下'
+				},
+				//imgSrc: '',
+				isActive:true,
+				isColor:'green',
+				fontSize:30
+			}
+		})
+	</script>
+</body>
+</html>

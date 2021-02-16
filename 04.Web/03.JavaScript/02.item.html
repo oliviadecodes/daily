@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>DOM.item()方法</title>
+</head>
+<body>
+	<p id="demo">单击按钮获取body元素的第一个子节点的名称</p>
+	<button onclick="myFunction()">点我</button>
+	<script type="text/javascript">
+		function myFunction(){
+			//getElementById() 方法可返回对拥有指定 ID 的第一个对象的引用。
+			var x=document.getElementById('demo');
+			x.innerHTML=document.body.childNodes.item(0).nodeName;  
+		}
+	</script>
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>InnerHTML</title>
+</head>
+<body>
+	<!--name 属性为按钮规定名称，用于在 JavaScript 中对元素进行引用，或者在表单提交之后，对表单数据进行引用。-->
+	<input type="button" value="onclickMe" id="点我">
+	<div id="box">
+		<span>猝然临之而不惊</span>
+	</div>
+	<br/>
+	<p>innerHTML是元素里的文字 换行 标签...<br>
+    innerHTML可进行读操作<br>
+    格式:变量名.innerHTML<br>
+    innerHTML可进行写操作<br>
+    格式:变量名.innerH=值(可是文字,也可是标签)</p>
+</body>
+</html>
+<script type="text/javascript">
+	//获取对应元素ID
+	//getElementById() 方法可返回对拥有指定 ID 的第一个对象的引用。
+	var button=document.getElementById('点我');
+	var box=document.getElementById('box');
+	//读操作
+	alert(box.innerHTML); 
+	// 写操作
+    button.onclick=function(){
+         box.innerHTML='无故加之而不怒';
+    };
+</script>

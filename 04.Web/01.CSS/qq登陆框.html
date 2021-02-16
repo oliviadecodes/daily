@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>登陆</title>
+    <style type="text/css">
+        body{
+            background-color: gray;
+        }
+        .wrap{
+            width: 414px;
+            height: 312px;
+            border: solid rgb(238, 238, 238) 2px;
+            background-color: white;
+            /* 相当于居中 上下为零，左右自动*/
+            /* margin: 0px auto; */
+        }
+        .wrap .title{
+            margin-top: 6px;
+            margin-bottom: 16px;
+
+            font-size: 20px;
+            color: rgb(51, 51, 51);
+
+            text-align: center;
+        }
+        .wrap .info{
+            color: rgb(102, 102, 102);
+            text-align: center;
+            margin-bottom: 36px;
+        }
+        .wrap .info a{
+            color: rgb(52, 129, 207);
+            /* 下划线 */
+            text-decoration: none;
+        }
+        .wrap #form{
+            width: 272px;
+            height: 150px;
+            margin: 0px auto;
+
+            text-align: center;
+        }
+        .wrap #form .input{
+            width: 268px;
+            height: 38px;
+            padding: 10px;
+            padding-right: 0px;
+            /* 以边框为基准 */
+            box-sizing: border-box;
+            margin-bottom: 17px;
+            border-radius: 3px;
+
+            border: solid rgb(214, 214, 214) 1px;
+        }
+        .wrap #form #btn{
+            border-radius: 3px;
+            box-sizing: content-box;
+            width: 258px;
+            height: 37px;
+            padding: 1px 7px 2px 7px;
+            border: none;
+            background-color: rgb(136, 210, 48);
+            color: white;
+            font-size: 17px;
+        }
+    </style>
+</head>
+<body>
+    <div class="wrap">
+        <div class="title">
+            账号密码登陆
+        </div>
+        <div class="info">
+            推荐使用<a href="">快速安全登陆</a>，防止盗号
+        </div>
+        <form id="form" action="" method="post">
+            <input class="input" type="text" placeholder="支持QQ号/邮箱/手机号登陆">
+            <input class="input" type="text" placeholder="密码">
+            <button id="btn" type="button">登 陆</button>
+        </form>
+    </div>
+</body>
+</html>
