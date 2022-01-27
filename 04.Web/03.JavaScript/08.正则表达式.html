@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>正则表达式</title>
+</head>
+<body>
+    <script>
+        //匹配手机号
+        var a = 15245885081
+        /* 
+        /^1[34578]\d{9}$/g 
+        ^可以规定必须以某个字符打头；[]可以限制必须用哪些字符，只表示一个；
+        \d表示所有的数字；{}表示重复的次数；$以什么字符结束；g表示全局模式；
+        */
+        //匹配邮箱
+        var a = 'dan.lao-shi_666@.bibi.com'
+        /*
+        /^([A-Za-z0-9_\-\.]+)@([A-Za-z0-9_\-\.]+)\.([A-Za-z]{2,6})$/g
+        用 + 来表示至少一个字符到无限的个字符的范围；. 和 - 是要用\转义的;
+        \w 包括任何文字字符，包括文字数字和下划线；* 表示重复的次数0到无穷大
+        */
+    </script>
+</body>
+</html>

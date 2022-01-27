@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://unpkg.com/react@16/umd/react.production.min.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js" crossorigin></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+</head>
+<body>
+    <div id="root"></div>
+     <script type="text/babel">
+     class ModeButton extends React.Component {  
+      
+        constructor(props) {  
+          super(props);   
+          this.state = {   
+             count: 0  
+          } 
+          //this通过实例在原型链上找到add，通过bind生成一个新的函数对象挂在实例自身的add属性上
+          // this.add = this.add.bind(this);
+         } 
+         add(){
+           this.setState({
+             count : this.state.count + 1
+           })
+         }
+         addNE(n, e){
+           //由于addNE作为onClick的回调，所以不是通过实例调用的，是直接调用的
+           //类中的方法默认开启了局部的严格模式，所以addNE中的this为andefined
+           console.log(e);
+           this.setState({
+             count : this.state.count + n
+           })
+         }
+        //  render是放在哪里的？-- ModeButton原型对象上，供实例使用
+         render() { 
+          //  render中的this是谁？-- ModeButton的实例对象 <=> ModeButton组件实例对象
+           return (
+             <div>
+              <h1>{this.state.count}</h1>
+              <button onClick={()=>this.add()}>+1</button>
+              <button onClick={(e)=>this.addNE(10, e)}>+n</button>
+              </div>
+           )
+         }
+        };
+
+    ReactDOM.render(
+        <ModeButton/>, document.getElementById('root')
+    );
+    /*
+        执行了ReactDOM.render(<ModeButton/>.....)之后发生了什么
+        1.React解析组件标签，找到了ModeButton组件
+        2.发现组件是用类定义的，随后new出来该类的实例，并通过该实例调用到原型上的render方法
+        3.将render上的虚拟DOM转成真实DOM，随后呈现在页面当中
+    */
+    </script>
+</body>
+</html>

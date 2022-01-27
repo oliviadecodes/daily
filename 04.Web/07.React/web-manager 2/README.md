@@ -1,0 +1,11 @@
+yarn add antd
+yarn add @craco/craco
+yarn add craco-less
+yarn add babel-plugin-import
+yarn add axios
+yarn add react-redux
+yarn add react-router-dom
+yarn add redux-devtools-extension
+yarn add redux-thunk
+yarn add react-json-view
+yarn add redux-persist

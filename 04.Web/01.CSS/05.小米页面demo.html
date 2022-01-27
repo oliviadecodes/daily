@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .warp{
+            width: 1226px;
+            height: 460px;
+        }
+        .warp .left-menu{
+            width: 234px;
+            height: 460px;
+            padding: 20px 0px;
+            /* 以边框为基准 */
+            box-sizing: border-box;
+            background-color: rgba(0,0,0,0.6);
+            position: relative;
+        }
+        .warp .left-menu .left-menu-item{
+            height: 42px;
+            width: 234px;
+            /* position: relative; */
+        }
+        .warp .left-menu .left-menu-item:hover{
+            background-color: #ff6700;
+        }
+        .warp .left-menu .left-menu-item:hover .children-warp{
+            display: block;
+        }
+        .warp .left-menu .left-menu-item a{
+            position: relative;
+            height: 42px;
+            width: 234px;
+            padding-left: 30px;
+            box-sizing: border-box;
+            /* 因为内联元素所以宽高没有变化 */
+            display: block;
+            line-height: 42px;
+            color: rgb(255, 255, 255);
+            font-size: 15px;
+            text-decoration: none;
+        }
+        .warp .left-menu .left-menu-item a span{
+            position: absolute;
+            right: 20px;
+        }
+        .warp .left-menu .left-menu-item .children-warp{
+            width: 400px;
+            height: 460px;
+            background-color: burlywood;
+            left: 234px;
+            top: 0px;
+            position: absolute;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="warp">
+        <ul class="left-menu">
+            <li class="left-menu-item">
+                <a href="">手机 电话卡<span class="arrowhead">></span></a>
+                <div class="children-warp">
+                    11111111111
+                </div>
+            </li>
+            <li class="left-menu-item">
+                <a href="">电视 盒子<span class="arrowhead">></span></a>
+                <div class="children-warp">
+                    22222222222
+                </div>
+            </li>
+        </ul>
+    </div>
+</body>
+</html>

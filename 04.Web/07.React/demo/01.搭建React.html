@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- 引入react环境 -->
+    <!-- 核心库 -->
+    <script src="bulid/react.js"></script>
+    <!-- 扩展库 -->
+    <script src="bulid/react-dom.js"></script>
+    <!-- 让浏览器支持babel语法 -->
+    <script src="bulid/babel-standalone.js"></script>
+</head>
+<body>
+    <div id="example"></div>
+    <!-- jsx语法 加上text/babel类型说明-->
+    <script type="text/babel">
+        function MyCompoent(){
+            console,log(this);//此处的this是undefind，因为babel开启了严格模式
+            return <h1>Hello World!</h1>;
+        }
+        ReactDOM.render(
+            <MyCompoent/>, //直接写html标签（jsx语法）
+            document.getElementById('example')
+        );
+    </script>
+</body>
+</html>

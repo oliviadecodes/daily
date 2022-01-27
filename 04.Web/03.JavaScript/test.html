@@ -1,0 +1,208 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>实例</title>
+  <link rel="stylesheet" type="text/css" href="style002.css">
+  <script>
+    function Click() {
+      document.getElementById("ClickDo").style.color = "sky-blue";
+    }
+  </script>
+</head>
+
+<body>
+  <h1>这是一次测试</h1>
+  <div class="first-1">
+    <h1>HELLO</h1>
+    <h4>作者：深瞳</h4>
+    <p>这是个盒子模型，运用了HTML和CSS的知识创建，里面含有很多其他知识，比如对图像的理解，页面设计等。
+      这些知识想要掌握好，需要经过很久的训练，对各种标签和属性都了解</p>
+    <img src="002.png">
+  </div>
+</body>
+</html> -->
+
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Test</title>
+  <script src="https://cdn.staticfile.org/react/16.4.0/umd/react.development.js"></script>
+  <script src="https://cdn.staticfile.org/react-dom/16.4.0/umd/react-dom.development.js"></script>
+  <script src="https://cdn.staticfile.org/babel-standalone/6.26.0/babel.min.js"></script>
+  <style>
+    .tao{
+      text-align: center;
+      margin-left: 50%;
+      width: 50px;
+      height: 50px;
+      background-color: red;
+      transform: translateX(-50%);
+      border-radius: 25px;
+      font-size: 35px;
+      color: white;
+      margin-top: 25px;
+    }
+    .top{
+      height: 35px;
+      margin: 0 10px;
+      margin-top: 20px;
+      border-bottom: orange 1px solid;
+    }
+    .user{
+      /* background-color: plum; */
+    }
+    .psw{
+      /* background-color: greenyellow; */
+      /* border-bottom: orange 1px solid; */
+      position: relative;
+    }
+    input{
+      height: 20px;
+      width: 100%;
+      margin-top: 8px;
+      outline: none;
+      border-width: 0;
+    }
+    .qie{
+      position: absolute;
+      bottom: 5px;
+      right: 3px;
+      font-size: 12px;
+    }
+    .btn{
+      margin: 45px 10px;
+      /* width: 100%; */
+      height: 30px;
+      background-color: rgb(255, 102, 0);
+      text-align: center;
+      line-height: 30px;
+      color: white;
+      border-radius: 15px;
+      font-size: 13px;
+    }
+    .userTip{
+      margin: 0 10px;
+      color: red;
+      font-size: 13px;
+      /* background-color: skyblue; */
+    }
+  </style>
+</head>
+
+<body>
+
+  <div id="example">
+    
+  </div>
+
+  <script type="text/babel">
+  
+    class Infos extends React.Component{
+      state = {
+        user:'',
+        password: '',
+        isType: true,
+        userTip: '',
+        pswTip:'',
+      }
+
+      userBlur = (e) => {
+        let value = e.target.value
+        value = value.trim()
+        let re = /^([a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+(\.[a-zA-Z0-9_-])+/  // 邮箱
+        let reg = /^(0|86|17951)?(13[0-9]|15[0123456789]|17[678]|18[0-9]|14[57])[0-9]{8}$/  // 手机号
+        let txt = ''
+        if( !value ){
+          txt = '请输入用户名'
+        }else if( !re.test(value) && !reg.test(value) ){
+          txt = '请输入正确格式邮箱/手机号'
+        }else{
+          txt = ''
+        }
+        this.setState({
+          user: value,
+          userTip: txt
+        })
+      }
+
+      pswInput = (e) =>{
+        let val = e.target.value
+        val = val.trim()
+        let a = val.replace(/[\u4E00-\u9FA5]|[\uFE30-\uFFA0]/g, '')
+        e.target.value = a
+      }
+
+      pswBlur = (e) =>{
+        let val = e.target.value
+        let txt = ''
+        let reg1 = /^(?![^a-zA-Z]+$)(?!\D+$)(?![^_]+$).{6,19}$/
+        let reg2 = /^[a-zA-Z][a-zA-Z0-9]\w{6,19}$/
+                    // /^[a-zA-Z](?![a-zA-Z]+$)\w{6,19}$/
+        if(val.length < 7 || val.length > 20){
+          txt = "请输入7-20位字符！"
+        }else if(!reg1.test(val)){
+          txt = "必须包含数字、字母、下划线！"
+        }else if(!reg2.test(val)){
+          txt = "必须由字母开头"
+        }else{
+          txt = ''
+        }
+        this.setState({
+          password: val,
+          pswTip: txt
+        })
+      }
+
+      cut = () => {
+        let {isType} = this.state
+        isType = !isType
+        this.setState({
+          isType
+        })
+      }
+
+      btnFun = () =>{
+        let {user,password} = this.state
+        console.log('3333',user,password)
+        if(user == '15031358474' && password == 'alibaba1_'){
+          alert('登录成功')
+        }else{
+          alert('登录失败')
+        }
+      }
+
+      render(){
+        let {isType,userTip,pswTip} = this.state
+        let word = isType ? 'password' : 'text'
+        console.log('111',this,isType,word)
+        return (
+          <div>
+            <div class="tao">淘</div>
+            <div class="user top">
+              <input type="text" placeholder="手机号/邮箱/会员名" onBlur={this.userBlur} />
+            </div>
+            <div class="userTip">{userTip}</div>
+            <div class="psw top">
+              <input type={word} placeholder="请输入登录密码" maxLength="20" onInput={this.pswInput} onBlur={this.pswBlur} />
+              <span class="qie" onClick={this.cut}>换</span>
+            </div>
+            <div class="userTip">{pswTip}</div>
+            <div class="btn" onClick={this.btnFun}>登录</div>
+          </div>
+        )
+      }
+    }
+    ReactDOM.render(
+      <Infos/>,
+      document.getElementById('example')
+    );
+  </script>
+
+</body>
+
+</html>

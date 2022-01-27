@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>类中方法this指向</title>
+</head>
+<body>
+    <script type="text/javascript">
+    //类中所有方法在局部中都开启了严格模式
+        class Person {
+            constructor(name, age){
+                this.name = name;
+                this.age = age;
+            }
+            // speak方法放在哪里？ -- 类的原型对象上，供实例使用
+            //通过Person实例调用speak时，speak中的this就是Person实例
+            speak(){
+                console.log(this);
+            }
+        }
+
+        const p1 = new Person("tom", 18);
+        p1.speak(); //通过实例调用speak方法
+    </script>
+</body>
+</html>

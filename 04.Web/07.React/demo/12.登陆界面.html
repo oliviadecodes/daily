@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.staticfile.org/react/16.4.0/umd/react.development.js"></script>
+    <script src="https://cdn.staticfile.org/react-dom/16.4.0/umd/react-dom.development.js"></script>
+    <script src="https://cdn.staticfile.org/babel-standalone/6.26.0/babel.min.js"></script>
+    <style>
+        .container {
+            width: 414px;
+            height: 312px;
+            border: solid rgb(238, 238, 238) 2px;
+            background-color: white;
+            margin: auto;
+            position: relative;
+        }
+        .tao {
+            text-align: center;
+            width: 50px;
+            height: 50px;
+            background-color: rgb(255, 102, 0);
+            color: white;
+            border-radius: 25px;
+            margin-top: 20px;
+            font-size: 35px;
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        .userinput{
+            width: 410px;
+            padding: 0;
+            display:inline-block;
+            outLine:none;
+            border:0;
+            height: 35px;
+            margin: 0px auto;
+            margin-top: 80px;
+            border-bottom: orange 1px solid;
+        }
+        .pawinput{
+            width: 410px;
+            padding: 0;
+            display:inline-block;
+            outLine:none;
+            border:0;
+            height: 35px;
+            margin: 0px auto;
+            margin-top: 20px;
+            border-bottom: orange 1px solid;
+        }
+        .err{
+            margin: 0 10px;
+            color: red;
+            font-size: 13px;
+        }
+        .btn{
+            margin: 45px 10px;
+            width: 400px;
+            height: 30px;
+            background-color: rgb(255, 102, 0);
+            text-align: center;
+            line-height: 30px;
+            color: white;
+            border-radius: 15px;
+            font-size: 13px;
+        }   
+    </style>
+</head>
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+        class FlavorForm extends React.Component {
+            state = {
+                user:'',
+                password: '',
+                userError: '',
+                passwordError:'',
+            } 
+            userCheck = (e) => {
+                let value = e.target.value
+                value = value.trim()
+                let re = /^([a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+(\.[a-zA-Z0-9_-])+/  // 邮箱
+                let reg = /^(0|86|17951)?(13[0-9]|15[0123456789]|17[678]|18[0-9]|14[57])[0-9]{8}$/  // 手机号
+                let txt = ''
+                if( !value ){
+                  txt = '请输入用户名'
+                }else if( !re.test(value) && !reg.test(value) ){
+                  txt = '请输入正确格式邮箱/手机号'
+                }else{
+                  txt = ''
+                }
+                this.setState({
+                  user: value,
+                  userError: txt
+                })
+            }
+            passwordCheck = (e) => {
+                let val = e.target.value;
+                console.log(val);
+                var reg=/^\w{6,20}$/;
+                let txt = '';
+                if(val.length < 7 || val.length > 20){
+                    txt = "请输入7-20位字符！"
+                }else if( !reg.test(val) ){
+                    txt = "密码为6-20位数字或字母或下划线!"
+                }else{
+                    this.setState({
+                        password:val
+                    })
+                }
+                this.setState({
+                    passwordError:txt
+                })
+            }
+            btnFun = () => {
+                let {user,password} = this.state;
+                if(user == '15245885081' && password == 'alibaba1_'){
+                    alert('登录成功')
+                }else{
+                alert('登录失败')
+            }
+
+            }
+            render() {
+                return (
+                    <div className="container">
+                        <div className="tao">淘</div>
+                        <div>
+                            <input className="userinput" type="text" placeholder="手机号/邮箱/会员名" onBlur={this.userCheck}/> 
+                        </div>
+                        <div className="err">{this.state.userError}</div>
+                        <div>       
+                            <input className="pawinput" type="text" placeholder="请输入登录密码" onBlur={this.passwordCheck}/>
+                        </div>
+                        <div className="err">{this.state.passwordError}</div>
+                        <button className="btn" onClick={this.btnFun}>登陆</button>
+                    </div>
+                )
+            }
+        }
+        
+        ReactDOM.render(
+                <FlavorForm/>,
+            document.getElementById('root')
+        )
+    </script>
+</body>
+</html>
