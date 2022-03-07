@@ -63,6 +63,18 @@
                 }
             );
         }
+
+        function debonce(func, time) {
+            let time1 = null;
+            return () => {
+                if (time1) {
+                    clearTimeout(time1);
+                    time1 = setTimeout(func(), time);
+                } else {
+                    time1 = setTimeout(func(), time);
+                }
+            }
+        }
     </script>
 </body>
 </html>
