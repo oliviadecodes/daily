@@ -4,7 +4,15 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>指令之v-bind绑定</title>
-	
+	<!-- 
+        Vue模版语法两大类：
+        1.插值语法：
+            功能：用于解析标签内容。
+            写法：{{xxx}}, xxx是js表达式，且可以直接读取到data中所有的属性。
+        2.指令语法：
+            功能：用于解携标签（包括：标签属性、标签体内容、绑定事件。。。）
+            举例：v-bind:href="xxx" 或 简写为 :href="xxx", xxx同样要写js表达式，且可以直接读取到data中的所有属性。
+     -->
 	<style>
 		.active
 		{
