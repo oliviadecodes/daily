@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>计算属性简写</title>
+	<script src="./vue.js"></script>
+</head>
+<body>
+    <!-- 
+        只有考虑读取不考虑修改才能用简写形式
+     -->
+	<div id='app'>
+	    姓：<input type="text" v-model="firstName"> <br/><br/>
+        名：<input type="text" v-model="lastName"> <br/><br/>
+        全名：<span>{{fullName}}</span>
+	</div>
+	<script type="text/javascript">
+        Vue.config.productionTip = false; // 阻止 vue 在启动时生成生产提示
+
+		new Vue({
+			el: '#app',
+			data:{
+				firstName:'张',
+				lastName:'三'
+			},
+            computed:{
+                // 完整写法
+                // fullName:{
+                //     get(){
+                //         // console.log(this) // 此处的this是vm
+                //         return this.firstName + this.lastName;
+                //     },
+                //     set(value){
+                //         const arr = value.split('-');
+                //         this.firstName = arr[0];
+                //         this.lastName = arr[1];
+                //     }
+                // }
+                // 简写
+                fullName(){
+                    return this.firstName + this.lastName;
+                }
+            }
+		})
+	</script>
+</body>
+</html>

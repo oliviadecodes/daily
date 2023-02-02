@@ -17,14 +17,27 @@
 	</style>
 </head>
 <body>
+    <!-- 
+        Vue中的事件修饰符
+            1.prevent:阻止默认事件（常用）；
+            2.stop:阻止事件冒泡（常用）；
+            3.once:事件只触发一次；
+            4.capture:使用事件的捕获模式；
+            5.self: 只有event.target是当前操作的元素才触发事件；
+            6.passive:事件的默认行为立即执行，无需等待事件回调执行完毕；（移动端）
+     -->
+     <!-- wheel 是鼠标滚轮的滚动； scroll是滚动条的滚动 -->
+     <!-- 事件修饰符可以连续写 @click.once.prevent-->
 	<div id='app'>
 		<h2>{{ num }}</h2>
 		<button v-on:click.once="handleClick">+1</button>
 		<div class="box" :class="{active:isActive}"></div>
 		<button @click="ChangeClick">切换</button>
 		<input v-on:keyup.enter="submit">
+        <button @click="ClickTest(a, $event)">测试(传参)</button>
 	</div>
 	<script type="text/javascript">
+        Vue.config.productionTip = false; // 阻止 vue 在启动时生成生产提示
 		new Vue({
 			el: '#app',
 			data:{
@@ -40,7 +53,10 @@
 				},
 				submit(){
 					alert(1);
-				}
+				},
+                ClickTest(a, event){
+                    console.log(a, event);
+                }
 			},
 		})
 	</script>
