@@ -32,17 +32,31 @@
 		<input v-model.trim="msg2">
 	</div>
 	<script type="text/javascript">
-		new Vue({
-			el:'#app',
-			data:{
-				msg: 'vue',
-				msg2:'',
-				checked:false,
-				checkedName:[],
-				txt:''
-			},
+		const v = new Vue({
+			// el:'#app',
+            // data的第一种写法对象式
+			// data:{
+			// 	msg: 'vue',
+			// 	msg2:'',
+			// 	checked:false,
+			// 	checkedName:[],
+			// 	txt:''
+			// },
+
+            // data的第一种写法函数式(组件必须用函数式)
+            // 由Vue管理的函数，一定不要用箭头函数，一旦写了箭头函数，this就不再是Vue实例了
+            data(){
+                return {
+                    msg: 'vue',
+                    msg2:'',
+                    checked:false,
+                    checkedName:[],
+                    txt:''
+                }
+            },
 			methods:{},
 		})
+        v.$mount('#app');
 	</script>
 </body>
 </html>

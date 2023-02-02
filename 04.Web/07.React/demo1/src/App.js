@@ -1,5 +1,6 @@
 import React from 'react';
 //import logo from './logo.svg';
+import Test from './Test'
 import './App.css';
 
 import Input from './input'
@@ -40,11 +41,21 @@ class App extends React.Component{
     )
   }
 
+
+
   render() {
+    // fuc1(){
+    //     setTimeout(() => {
+    //       console.log(this.a)
+    //     }, 100)
+    // }
+    // var a = 2;
+    // let obj = {a : 100}
+    // fuc1.call(obj);
     console.log("更新app组件");
     return(
       <div>
-        <Nav/>
+        {/* <Nav/>
         <Buttom/>
         <button type="button" style={ this.state.like ? {color : "red"} : {color : "black"}}
       onClick={()=>this.hanleClick()}
@@ -53,7 +64,8 @@ class App extends React.Component{
           this.state.like ? "已赞" : "喜欢"
         }
       </button>
-      <Input></Input>
+      <Input></Input> */}
+      <Test />
       </div>
       
     )
