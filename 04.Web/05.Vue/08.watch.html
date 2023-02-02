@@ -7,38 +7,78 @@
 	<script src="vue.js"></script>
 </head>
 <body>
+    <!-- 
+        监视属性watch：
+            1.当被监视的属性变化时，回调函数自动调用，进行相关操作
+            2.监视属性必须存在，才能进行监视！！
+            3.监视的两种写法：
+                1.new Vue时传入watch配置
+                2.通过vm.$watch监视
+     -->
+     <!-- 
+        深度监视：
+            1.Vue中的watch默认不监测对象内部值的改变（一层）
+            2.配置deep：true可以监测对象内部值改变（多层）
+        备注：
+            1.Vue自身可以检测对象内部值的改变，但Vue提供的watch默认不可以！
+            2.使用watch时根据数据的具体结构，决定是否采用深度监视
+     -->
 	<div id='app'>
 		<input type="text" v-model= 'msg'>
 		<h3>{{ msg }}</h3>
 		<h3>{{stus[0].name}}</h3>
+        <!-- 绑定事件的时候： @xxx="yyy" yyy可以写一写简单的语句  -->
 		<button @click='stus[0].name = "Tom"'>改变</button>
 	</div>
 	<script>
 		// 对于基本数据类型可以使用watch直接监听，复杂的数据类型（object,Array）要深度监视。
-		new Vue({
+		const vm = new Vue({
 			el: '#app',
 			data: {
 				msg:'',
-				stus:[{name:'jack'}]
+				stus:[{name:'jack'}],
+                isHot: true
 			},
 			watch: {
 				//key是属于data对象的属性名，value:监视后的行为 newV:新值 oldV:老值
 				//监听数据变化获取新值或者老值
-				'msg':function(newV,oldV){
+                //不需要配置项了话，可以用简写
+				msg(newV,oldV){
 					//console.log(newV,oldV);
 					if(newV === '100'){
 						console.log('hello');
 					}
 				},
-				//深度监视 Object/Array
+				//深度监视 Object/Array 
 				"stus":{
 					deep:'true',
 					handler:function(newV,oldV){
 						console.log(newV[0].name);
 					}
-				}
+				},
+                isHot: {
+                    immediate: true, // 初始化时让handler调用
+                    // handler什么时候掉用？当isHot发生改变时
+                    handler(newV,oldV) {
+                        console.log('isHot被修改了', newV, oldV )
+                    }
+                }
 			}
 		})
+
+        // 正常写法
+        // vm.$watch('isHot',{
+        //     immediate: true, // 初始化时让handler调用
+        //     // handler什么时候掉用？当isHot发生改变时
+        //     handler(newV,oldV) {
+        //         console.log('isHot被修改了', newV, oldV )
+        //     }
+        // })
+
+        // 简写 （不能用箭头函数会导致this指向有问题）
+        vm.$watch('isHot',function(newV,oldV) {
+            console.log('isHot被修改了', newV, oldV )
+        })
 	</script>
 </body>
 </html>
