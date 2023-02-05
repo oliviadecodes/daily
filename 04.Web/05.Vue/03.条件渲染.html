@@ -7,6 +7,7 @@
 	<script src="./vue.js"></script>
 </head>
 <body>
+    <!-- 切换频率高用 v-show，频率低用 v-if-->
 	<div id = "app">
 		<div v-if = " isShow ">
 			显示
@@ -14,6 +15,7 @@
 		<div v-else>
 			隐藏
 		</div>
+        <!-- 使用 v-show进行条件渲染-->
 		<div v-show = "show">正常显示</div>
 	</div>
 	
